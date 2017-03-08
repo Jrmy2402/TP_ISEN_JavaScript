@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+        <title>Titre principal de la page</title>
+        <meta charset="utf-8">
+        <meta name="description" content="165c. uniques">
+</head>
+
+<body>
+    <div id="page">
+    <!-- DIV : Aucun sens sémantique - zone géographique -->
+    
+        <div>
+          <table id="myTable">
+            <tr><th>Nom</th><th>Numéro</th></tr>
+          </table>
+        </div>
+        <script>
+          //noprotect
+          class Personne {
+            constructor (nom, numero) {
+                this.nom = nom;
+                this.numero = numero;
+            }
+            display () {
+              return "Prénom :" + this.nom + " Numéro :" + this.numero;
+            }
+            getNom() {
+              return this.nom;
+            }
+            getNumero() {
+              return this.numero;
+            }
+          }
+          var saisie = function () {
+            var tab = [];
+            while(x !== null && y !== null) {
+              var x = prompt('Entrez un nom :');
+                  if (x !== null){
+                    var y = prompt('"Enter un numéro :"');
+                    if(x !== null && y !== null) {
+                      var myObjet = new Personne (x, y);
+                      tab.push(myObjet);
+                    }
+                  }
+                
+            }
+              return tab;
+          }
+          var affiche = function (tab) {
+              console.log(tab);
+              var table = document.getElementById("myTable");
+              for (let elt of tab){
+                console.log(elt.display());
+                // Create an empty <tr> element and add it to the 1st position of the table:
+                var row = table.insertRow(-1);
+
+                // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                var cell1 = row.insertCell(0).innerHTML = elt.getNom();
+                var cell2 = row.insertCell(1).innerHTML =  elt.getNumero();
+              }
+              
+
+          }
+          affiche (saisie());
+        </script>
+    </div>
+</body>
+</html>
